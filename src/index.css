@@ -1,0 +1,243 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap");
+
+:root {
+  --bg: #0b1020;
+  --bg-elevated: #12182b;
+  --card: #171e34;
+  --card-hover: #1d2640;
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #e8edf8;
+  --muted: #9aa6c3;
+  --accent: #5eead4;
+  --accent-2: #7c9cff;
+  --gold: #f5c542;
+  --shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  --radius: 18px;
+  --font: "Outfit", system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background:
+    radial-gradient(circle at top right, rgba(124, 156, 255, 0.16), transparent 36%),
+    radial-gradient(circle at left 20%, rgba(94, 234, 212, 0.1), transparent 28%),
+    var(--bg);
+  color: var(--text);
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+.app {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  width: min(1100px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 24px 0 48px;
+}
+
+/* Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(12px);
+  background: rgba(11, 16, 32, 0.82);
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar-inner {
+  width: min(1100px, calc(100% - 32px));
+  margin: 0 auto;
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  font-size: 1.05rem;
+}
+
+.brand-mark {
+  font-size: 1.3rem;
+}
+
+/* XP badge */
+.xp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  font-weight: 700;
+  color: var(--gold);
+}
+
+/* Home */
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 40px;
+}
+
+.home-kicker {
+  margin: 0 0 10px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  font-size: 0.85rem;
+}
+
+.home-title {
+  margin: 0;
+  font-size: clamp(2.6rem, 8vw, 4.6rem);
+  line-height: 1;
+  letter-spacing: 0.04em;
+}
+
+.home-subtitle {
+  margin: 18px 0 0;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-weight: 600;
+}
+
+.home-desc {
+  margin: 14px 0 0;
+  max-width: 520px;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.start-btn {
+  margin-top: 32px;
+  border: 0;
+  cursor: pointer;
+  color: #06241f;
+  background: linear-gradient(180deg, #7ff0dd, var(--accent));
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 16px 42px;
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(94, 234, 212, 0.25);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.start-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(94, 234, 212, 0.32);
+}
+
+.start-btn:active {
+  transform: translateY(0);
+}
+
+.home-hint {
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.feature-grid {
+  width: 100%;
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.feature-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 16px;
+  box-shadow: var(--shadow);
+  animation: fade-up 0.5s ease both;
+}
+
+.feature-card:nth-child(2) {
+  animation-delay: 0.07s;
+}
+
+.feature-card:nth-child(3) {
+  animation-delay: 0.14s;
+}
+
+.feature-card:nth-child(4) {
+  animation-delay: 0.21s;
+}
+
+.feature-icon {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.feature-card p {
+  margin: 0;
+  font-weight: 600;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 800px) {
+  .feature-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .home {
+    padding-top: 20px;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .navbar-inner,
+  .main {
+    width: min(1100px, calc(100% - 24px));
+  }
+}
