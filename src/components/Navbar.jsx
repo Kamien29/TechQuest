@@ -1,19 +1,24 @@
-import XPBadge from "./XPBadge"
-
-function Navbar({ xp = 0 }) {
+function Navbar({ onBack, xp = 0 }) {
   return (
     <header className="navbar">
-      <div className="navbar-inner">
-        <div className="brand">
-          <span className="brand-mark" aria-hidden="true">
-            🚀
-          </span>
-          <span>TECH QUEST</span>
+      <div className="nav-left">
+        {onBack && (
+          <button className="back-button" onClick={onBack}>
+            ←
+          </button>
+        )}
+
+        <div className="logo">
+          <span>🚀</span>
+          <strong>TECH QUEST</strong>
         </div>
-        <XPBadge xp={xp} />
+      </div>
+
+      <div className="xp-badge">
+        🏆 {xp} XP
       </div>
     </header>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
