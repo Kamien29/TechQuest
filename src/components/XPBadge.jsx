@@ -1,10 +1,9 @@
-function XPBadge({ xp = 0 }) {
+function XPBadge({ xp }) {
   return (
-    <div className="xp-badge" aria-label={`${xp} punktów doświadczenia`}>
-      <span aria-hidden="true">🏆</span>
-      <span>{xp} XP</span>
+    <div className="xp-badge">
+      🏆 {xp} XP
     </div>
-  )
+  );
 }
 
-export default XPBadge
+export default XPBadge;
