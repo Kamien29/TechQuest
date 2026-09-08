@@ -12,3 +12,4 @@ npm run dev
 ## Stack
 
 React + JavaScript + Vite + HTML + CSS (bez backendu).
+![Obraz](https://github.com/Kamien29/TechQuest/blob/main/homePage.png)
