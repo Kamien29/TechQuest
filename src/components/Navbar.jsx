@@ -9,13 +9,14 @@ function Navbar({ onBack, xp = 0 }) {
         )}
 
         <div className="logo">
-          <span>🚀</span>
+          
           <strong>TECH QUEST</strong>
         </div>
       </div>
 
       <div className="xp-badge">
-        🏆 {xp} XP
+        <span class="material-symbols-outlined">trophy</span>
+ {xp} XP
       </div>
     </header>
   );
