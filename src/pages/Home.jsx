@@ -9,7 +9,8 @@ function Home({ onStart }) {
         <section className="hero">
           <div className="hero-content">
             <span className="eyebrow">
-              🚀 EDUKACYJNA GRA PROGRAMISTYCZNA
+              <img src="src\assets\code_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="Code" />
+               EDUKACYJNA GRA PROGRAMISTYCZNA
             </span>
 
             <h1>
@@ -32,14 +33,14 @@ function Home({ onStart }) {
 
           <div className="hero-robot">
             <div className="robot-glow">
-              🤖
+              <img src="src\assets\smart_toy_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="Robot" />
             </div>
           </div>
         </section>
 
         <section className="features">
           <div className="feature-card">
-            <span>💻</span>
+            <span><img src="src\assets\computer_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="Komputer" /></span>
             <h3>Programowanie</h3>
             <p>
               Poznaj podstawy logicznego myślenia
@@ -48,7 +49,7 @@ function Home({ onStart }) {
           </div>
 
           <div className="feature-card">
-            <span>🤖</span>
+            <span><img src="src\assets\smart_toy_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="Robot" /></span>
             <h3>Robot</h3>
             <p>
               Twórz instrukcje i obserwuj,
@@ -57,8 +58,7 @@ function Home({ onStart }) {
           </div>
 
           <div className="feature-card">
-            <span>🏆</span>
-            <h3>XP</h3>
+            <span class="material-symbols-outlined"><img src="..\src\assets\trophy_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="" /></span><h3>XP</h3>
             <p>
               Rozwiązuj kolejne misje
               i zdobywaj doświadczenie.
