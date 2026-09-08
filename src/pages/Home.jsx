@@ -58,7 +58,7 @@ function Home({ onStart }) {
           </div>
 
           <div className="feature-card">
-            <span class="material-symbols-outlined"><img src="..\src\assets\trophy_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="" /></span><h3>XP</h3>
+            <span class="material-symbols-outlined"><img src="..\src\assets\trophy_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="Trophy" /></span><h3>XP</h3>
             <p>
               Rozwiązuj kolejne misje
               i zdobywaj doświadczenie.
