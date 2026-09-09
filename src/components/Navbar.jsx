@@ -1,21 +1,26 @@
+import ThemeToggle from "./themeToggle";
+
 function Navbar({ onBack, xp = 0 }) {
   return (
     <header className="navbar">
       <div className="nav-left">
         {onBack && (
-          <button className="back-button" onClick={onBack}>
+          <button className="back-button" onClick={onBack} type="button">
             ←
           </button>
         )}
 
         <div className="logo">
-          
           <strong>TECH QUEST</strong>
         </div>
       </div>
 
-      <div className="xp-badge">
-<span class="material-symbols-outlined"><img src="..\src\assets\trophy_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="Trophy" /></span> {xp} XP
+      <div className="nav-right">
+        <ThemeToggle />
+
+        <div className="xp-badge">
+          🏆 {xp} XP
+        </div>
       </div>
     </header>
   );

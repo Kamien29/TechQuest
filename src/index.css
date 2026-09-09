@@ -1,4 +1,75 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+:root {
+  --bg: #0c0f16;
+  --bg-secondary: #10151e;
+  --surface: #121721;
+  --surface-2: #171d29;
+  --surface-3: #1b2130;
+
+  --border: #202736;
+  --border-light: #293140;
+
+  --text: #f5f7fb;
+  --text-secondary: #929aaa;
+  --text-muted: #697386;
+
+  --primary: #705cf6;
+  --primary-hover: #806dfc;
+
+  --success: #69d39b;
+  --danger: #ff8c8c;
+  --warning: #f0b54c;
+
+  --shadow: rgba(0, 0, 0, 0.25);
+}
+
+html[data-theme="light"] {
+  --bg: #f4f6fa;
+  --bg-secondary: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #f0f2f7;
+  --surface-3: #e7eaf1;
+
+  --border: #dce1ea;
+  --border-light: #cdd3df;
+
+  --text: #171b24;
+  --text-secondary: #596273;
+  --text-muted: #7b8494;
+
+  --primary: #6251df;
+  --primary-hover: #5543cc;
+
+  --success: #24965d;
+  --danger: #d94c4c;
+  --warning: #c98413;
+
+  --shadow: rgba(30, 40, 60, 0.12);
+}
+
+html[data-theme="neon"] {
+  --bg: #080b12;
+  --bg-secondary: #0b101a;
+  --surface: #0e1622;
+  --surface-2: #111c2b;
+  --surface-3: #152238;
+
+  --border: #1d3850;
+  --border-light: #28506d;
+
+  --text: #ecfaff;
+  --text-secondary: #9db8c9;
+  --text-muted: #668195;
+
+  --primary: #00d9ff;
+  --primary-hover: #32e4ff;
+
+  --success: #32e69a;
+  --danger: #ff5f7a;
+  --warning: #ffc857;
+
+  --shadow: rgba(0, 217, 255, 0.12);
+}
 
 * {
   box-sizing: border-box;
@@ -972,4 +1043,241 @@ img{
 }
 .hero-robot .robot-glow div,img{
   width: 1.3em;
+}
+
+/* ===== TECH QUEST THEMES ===== */
+
+:root {
+  --bg: #0c0f16;
+  --bg-secondary: #10151e;
+  --surface: #121721;
+  --surface-2: #171d29;
+  --surface-3: #1b2130;
+  --border: #202736;
+  --border-light: #293140;
+  --text: #f5f7fb;
+  --text-secondary: #929aaa;
+  --text-muted: #697386;
+  --primary: #705cf6;
+  --primary-hover: #806dfc;
+  --success: #69d39b;
+  --danger: #ff8c8c;
+  --warning: #f0b54c;
+  --shadow: rgba(0, 0, 0, 0.25);
+}
+
+html[data-theme="light"] {
+  --bg: #f4f6fa;
+  --bg-secondary: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #f0f2f7;
+  --surface-3: #e7eaf1;
+  --border: #dce1ea;
+  --border-light: #cdd3df;
+  --text: #171b24;
+  --text-secondary: #596273;
+  --text-muted: #7b8494;
+  --primary: #6251df;
+  --primary-hover: #5543cc;
+  --success: #24965d;
+  --danger: #d94c4c;
+  --warning: #c98413;
+  --shadow: rgba(30, 40, 60, 0.12);
+}
+
+html[data-theme="neon"] {
+  --bg: #080b12;
+  --bg-secondary: #0b101a;
+  --surface: #0e1622;
+  --surface-2: #111c2b;
+  --surface-3: #152238;
+  --border: #1d3850;
+  --border-light: #28506d;
+  --text: #ecfaff;
+  --text-secondary: #9db8c9;
+  --text-muted: #668195;
+  --primary: #00d9ff;
+  --primary-hover: #32e4ff;
+  --success: #32e69a;
+  --danger: #ff5f7a;
+  --warning: #ffc857;
+  --shadow: rgba(0, 217, 255, 0.12);
+}
+
+body {
+  color: var(--text);
+  background:
+    radial-gradient(
+      circle at top left,
+      color-mix(in srgb, var(--primary) 14%, transparent),
+      transparent 35%
+    ),
+    var(--bg);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+  background: var(--surface-3);
+  border-color: var(--primary);
+}
+
+.navbar,
+.feature-card,
+.mission-card,
+.block-palette,
+.program-box,
+.game-area,
+.board-wrapper,
+.board-cell,
+.code-block,
+.results-card,
+.game-message,
+.back-button,
+.secondary-button,
+.clear-button,
+.theme-toggle {
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* ===== LOOP CONTROLS ===== */
+
+.loop-block {
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.code-block.loop {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-left: 5px solid var(--warning);
+  border-radius: 10px 10px 4px 4px;
+  background: var(--surface-3);
+}
+
+.code-block.loop > span {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.loop-count {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.loop-count button {
+  width: 27px;
+  height: 27px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--border-light);
+  border-radius: 7px;
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.loop-count button:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+  transform: scale(1.05);
+}
+
+.loop-count button:active {
+  transform: scale(0.95);
+}
+
+.loop-count input {
+  width: 42px;
+  height: 29px;
+  padding: 0 4px;
+  border: 1px solid var(--warning);
+  border-radius: 7px;
+  background: var(--bg);
+  color: var(--warning);
+  text-align: center;
+  font-size: 15px;
+  font-weight: 800;
+  outline: none;
+}
+
+.loop-count input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 18%, transparent);
+}
+
+.loop-children {
+  position: relative;
+  min-height: 58px;
+  margin: 0 10px 0 20px;
+  padding: 12px 10px 12px 18px;
+  border-left: 4px solid var(--warning);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  border-radius: 0 0 10px 10px;
+  background: color-mix(in srgb, var(--warning) 5%, var(--surface));
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.loop-children:hover {
+  background: color-mix(in srgb, var(--warning) 8%, var(--surface));
+}
+
+.loop-placeholder {
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border: 1px dashed var(--border-light);
+  border-radius: 7px;
+  color: var(--text-muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+.loop-children .program-block + .program-block {
+  margin-top: 7px;
+}
+
+.drop-target {
+  border-radius: 10px;
+  outline: 2px dashed var(--primary);
+  outline-offset: 3px;
 }

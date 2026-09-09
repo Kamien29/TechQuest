@@ -5,7 +5,12 @@ function createBlock(data) {
   return {
     ...data,
     id: crypto.randomUUID(),
-    ...(data.type === "LOOP" ? { count: data.count || 3, children: [] } : {}),
+    ...(data.type === "LOOP"
+      ? {
+          count: data.count || 3,
+          children: [],
+        }
+      : {}),
   };
 }
 
@@ -21,8 +26,13 @@ function removeById(blocks, id) {
 
     if (Array.isArray(block.children)) {
       const nested = removeById(block.children, id);
+
       if (nested.removed) removed = nested.removed;
-      result.push({ ...block, children: nested.blocks });
+
+      result.push({
+        ...block,
+        children: nested.blocks,
+      });
     } else {
       result.push(block);
     }
@@ -33,27 +43,56 @@ function removeById(blocks, id) {
 
 function containsId(blocks, id) {
   return blocks.some(
-    (block) => block.id === id || (Array.isArray(block.children) && containsId(block.children, id))
+    (block) =>
+      block.id === id ||
+      (Array.isArray(block.children) && containsId(block.children, id))
   );
 }
 
 function insertBefore(blocks, targetId, item) {
   const result = [];
+
   for (const block of blocks) {
     if (block.id === targetId) result.push(item);
     result.push(block);
   }
+
   return result;
 }
 
 function addToLoop(blocks, loopId, child) {
   return blocks.map((block) => {
     if (block.id === loopId && block.type === "LOOP") {
-      return { ...block, children: [...(block.children || []), child] };
+      return {
+        ...block,
+        children: [...(block.children || []), child],
+      };
     }
+
     if (Array.isArray(block.children)) {
-      return { ...block, children: addToLoop(block.children, loopId, child) };
+      return {
+        ...block,
+        children: addToLoop(block.children, loopId, child),
+      };
     }
+
+    return block;
+  });
+}
+
+function updateLoopCount(blocks, id, count) {
+  return blocks.map((block) => {
+    if (block.id === id && block.type === "LOOP") {
+      return { ...block, count };
+    }
+
+    if (Array.isArray(block.children)) {
+      return {
+        ...block,
+        children: updateLoopCount(block.children, id, count),
+      };
+    }
+
     return block;
   });
 }
@@ -83,14 +122,19 @@ export default function Program({ program, setProgram }) {
     e.preventDefault();
     e.stopPropagation();
 
-    const paletteData = e.dataTransfer.getData("application/x-techquest-palette");
+    const paletteData = e.dataTransfer.getData(
+      "application/x-techquest-palette"
+    );
+
     if (paletteData) {
       const newBlock = createBlock(JSON.parse(paletteData));
+
       if (targetBlock.type === "LOOP" || intoLoop) {
-        setProgram(addToLoop(program, targetBlock.id, newBlock));
+        setProgram((current) => addToLoop(current, targetBlock.id, newBlock));
       } else {
-        setProgram(insertBefore(program, targetBlock.id, newBlock));
+        setProgram((current) => insertBefore(current, targetBlock.id, newBlock));
       }
+
       finishDrag();
       return;
     }
@@ -105,7 +149,11 @@ export default function Program({ program, setProgram }) {
       return;
     }
 
-    const { blocks: withoutDragged, removed } = removeById(program, draggedBlock.id);
+    const { blocks: withoutDragged, removed } = removeById(
+      program,
+      draggedBlock.id
+    );
+
     if (!removed) {
       finishDrag();
       return;
@@ -123,21 +171,33 @@ export default function Program({ program, setProgram }) {
 
   function handleProgramDrop(e) {
     e.preventDefault();
-    const paletteData = e.dataTransfer.getData("application/x-techquest-palette");
+
+    const paletteData = e.dataTransfer.getData(
+      "application/x-techquest-palette"
+    );
+
     if (paletteData) {
-      setProgram((prev) => [...prev, createBlock(JSON.parse(paletteData))]);
+      const newBlock = createBlock(JSON.parse(paletteData));
+      setProgram((current) => [...current, newBlock]);
       finishDrag();
       return;
     }
+
     if (draggedBlock) {
       const { blocks, removed } = removeById(program, draggedBlock.id);
+
       if (removed) setProgram([...blocks, removed]);
     }
+
     finishDrag();
   }
 
   function deleteBlock(id) {
     setProgram(removeById(program, id).blocks);
+  }
+
+  function handleCountChange(id, count) {
+    setProgram((current) => updateLoopCount(current, id, count));
   }
 
   return (
@@ -159,13 +219,17 @@ export default function Program({ program, setProgram }) {
           </div>
         ) : (
           program.map((block) => (
-            <div className={dragOverId === block.id ? "drop-target" : ""} key={block.id}>
+            <div
+              className={dragOverId === block.id ? "drop-target" : ""}
+              key={block.id}
+            >
               <Block
                 block={block}
                 onDelete={deleteBlock}
                 onDragStart={handleDragStart}
                 onDrop={handleDrop}
                 onDragOver={handleDragOver}
+                onCountChange={handleCountChange}
               />
             </div>
           ))
