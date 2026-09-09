@@ -1,6 +1,10 @@
 # Tech Quest
 
+<<<<<<< HEAD
 Gotowa wersja projektu edukacyjnej aplikacji do nauki programowania blokowego.
+=======
+Aplikacja edukacyjna do nauki podstaw programowania przez układanie bloków instrukcji dla wirtualnego robota.
+>>>>>>> 158d081aafe949c6ffe06eb536538284508bfa93
 
 ## Uruchomienie
 
@@ -9,6 +13,7 @@ npm install
 npm run dev
 ```
 
+<<<<<<< HEAD
 ## Zmiany w tej wersji
 
 - naprawiony konflikt `ThemeToggle.jsx` / `themeToggle.jsx`
@@ -21,3 +26,9 @@ npm run dev
 - drag & drop bloków
 - przenoszenie bloków do pętli
 - obsługa zagnieżdżonych bloków
+=======
+## Stack
+
+React + JavaScript + Vite + HTML + CSS (bez backendu).
+![Obraz](https://github.com/Kamien29/TechQuest/blob/main/homePage.png)
+>>>>>>> 158d081aafe949c6ffe06eb536538284508bfa93
